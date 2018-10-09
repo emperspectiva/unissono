@@ -1,2 +1,4 @@
 unissono.egg-info/
 *.pyc
+.#*
+.ipynb_checkpoints/
