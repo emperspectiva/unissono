@@ -16,7 +16,8 @@ def download():
     logger.info("Downloading SAS input")
     unissono.datasets.download(_PNAD_TRABALHO_2017_INPUT, dest)
     logger.info("Extracting dataset files")
-    unissono.datasets.extract_zip(fname.absolute(), dest.absolute())
+    unissono.datasets.extract_zip(fname.absolute().as_posix(),
+                                  dest.absolute().as_posix())
 
 
 def _parse_sas(fname):

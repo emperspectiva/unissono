@@ -15,7 +15,6 @@ def download(url, dest):
     """ Download given url to dest.
     """
     dest.mkdir(parents=True, exist_ok=True)
-    print("created")
     fname = os.path.basename(urlparse(url).path)
     fname_abs = dest / fname
 
