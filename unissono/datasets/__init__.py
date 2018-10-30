@@ -11,11 +11,12 @@ DATASETS_DIR = Path.home() / ".unissono/data/"
 logger = logging.getLogger(__name__)
 
 
-def download(url, dest):
+def download(url, dest, fname = None):
     """ Download given url to dest.
     """
     dest.mkdir(parents=True, exist_ok=True)
-    fname = os.path.basename(urlparse(url).path)
+    if fname is None:
+        fname = os.path.basename(urlparse(url).path)
     fname_abs = dest / fname
 
     if fname_abs.exists():
@@ -24,7 +25,10 @@ def download(url, dest):
 
     with fname_abs.open("wb") as o:
         with urllib.request.urlopen(url) as f:
-            content_length = int(f.info()["Content-length"])
+            content_length = 0
+            if "Content-length" in f.info():
+                content_length = int(f.info()["Content-length"])
+
             with tqdm(total=content_length) as pbar:
                 while True:
                     buf = f.read(16*1024)
@@ -35,6 +39,9 @@ def download(url, dest):
 
     return fname_abs
 
+def download_content(url):
+    with urllib.request.urlopen(url) as f:
+        return f.read()
 
 def extract_zip(fname, dest):
     zip = zipfile.ZipFile(fname, "r")

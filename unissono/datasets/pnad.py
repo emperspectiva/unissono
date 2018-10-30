@@ -1,7 +1,8 @@
 import logging
-import unissono.datasets
 import pandas as pd
 from tqdm import tqdm
+
+import unissono.datasets
 
 _PNAD_TRABALHO_2017 = "ftp://ftp.ibge.gov.br/Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/2017/Suplementos/Dados/PNADC_022017_educacao_20180816.zip" # noqa
 _PNAD_TRABALHO_2017_INPUT = "ftp://ftp.ibge.gov.br/Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados/2017/Suplementos/Documentacao/Input_PNADC_trimestral_educacao_20180816.txt" # noqa
